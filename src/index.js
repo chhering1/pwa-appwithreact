@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import OneSignal from 'react-onesignal';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,3 +22,6 @@ serviceWorkerRegistration.register();
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+
+OneSignal.initialize('8a753e99-73aa-4f8f-8770-55e767c8e733');

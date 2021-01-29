@@ -1,6 +1,10 @@
 import React from 'react';
 import OneSignal from 'react-onesignal';
-import { Router } from '@reach/router';
+// import { Router } from '@reach/router';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route } from "react-router-dom";
 import Home from './components/Home'
 import Page from './components/Page';
 
@@ -10,10 +14,17 @@ OneSignal.initialize('8a753e99-73aa-4f8f-8770-55e767c8e733', {
 
 function App()  {
     return (
-           <Router>
-              <Home path="/"/>
-              <Page path="/page" />
-           </Router>
+      <Router>
+      <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/page">
+        <Page />
+      </Route>
+      
+    </Switch>
+    </Router>
     )
 }
 export default App;

@@ -70,3 +70,15 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+ if (self.indexedDB) {
+   console.log('indexdb is supported')
+ }
+ var request = self.IndexedDB.open('EXAMPLE_DB', 1);
+var db;
+request.onsuccess = function(event) {
+    console.log('[onsuccess]', request.result);
+    db = event.target.result; // === request.result
+};
+request.onerror = function(event) {
+    console.log('[onerror]', request.error);
+};

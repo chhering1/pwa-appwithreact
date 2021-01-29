@@ -1,5 +1,6 @@
 import logo from '../logo.svg';
 import '../App.css';
+import Demo from './Geolocate';
 
 const Home = () => {
     return ( 
@@ -9,6 +10,8 @@ const Home = () => {
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
+        <Demo />
+
           <a
             className="App-link"
             href="https://reactjs.org"

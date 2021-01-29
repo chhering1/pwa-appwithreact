@@ -1,4 +1,4 @@
- import image from '../img/image.png';
+ import image from '../img/image.jpg';
 
  const Page = () => {
      return (  

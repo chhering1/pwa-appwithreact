@@ -1,6 +1,6 @@
 import React from 'react';
 import OneSignal from 'react-onesignal';
-import {Router } from '@reach/router';
+import { Router } from '@reach/router';
 import Home from './components/Home'
 import Page from './components/Page';
 

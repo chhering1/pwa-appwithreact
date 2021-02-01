@@ -32,7 +32,7 @@ function App()  {
         <Page />
       </Route>
       <Route path="/notfound">
-        <NotFound/>
+        <NotFound default />
       </Route>
       
     </Switch>

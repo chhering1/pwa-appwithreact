@@ -17,14 +17,13 @@ OneSignal.initialize('8a753e99-73aa-4f8f-8770-55e767c8e733', {
 function App()  {
     return (
       <>
+      <Router>
       <nav>
         <Link to="/">  homepage</Link>
         <Link to="/page"> subpage </Link>
-
-        
-
       </nav>
-      <Router>
+
+      
       <Switch>
       <Route exact path="/">
         <Home />

@@ -85,7 +85,7 @@ self.addEventListener('message', (event) => {
      break;
 
      case 'image' : 
-         caches.match ( 'offline_img.jpg')
+         caches.match ( '/offline_img.jpg')
      break;
 
      default :

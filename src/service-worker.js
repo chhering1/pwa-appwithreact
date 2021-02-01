@@ -10,7 +10,8 @@
 import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
-import { registerRoute } from 'workbox-routing';
+import { registerRoute, setDefaultHandler, setCatchHandler } from 'workbox-routing';
+import { NetworkOnly } from 'workbox-strategies';
 import { StaleWhileRevalidate } from 'workbox-strategies';
 
 clientsClaim();
@@ -70,15 +71,25 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
- if (self.indexedDB) {
-   console.log('indexdb is supported')
- }
- var request = self.IndexedDB.open('EXAMPLE_DB', 1);
-var db;
-request.onsuccess = function(event) {
-    console.log('[onsuccess]', request.result);
-    db = event.target.result; // === request.result
-};
-request.onerror = function(event) {
-    console.log('[onerror]', request.error);
-};
+ precacheAndRoute( [
+   {url: '/offline.html'},
+   {url: '/offline_img.jpg'}
+ ])
+
+ setDefaultHandler(new  NetworkOnly());
+
+ setCatchHandler( ({event}) => {
+   switch (event.request.destination) {
+     case 'document' : 
+        caches.match('/offline.html')
+     break;
+
+     case 'image' : 
+         caches.match ( 'offline_img.jpg')
+     break;
+
+     default :
+     //if we dont have a fallback, just return an error response
+     return Response.error();
+   }
+ })
